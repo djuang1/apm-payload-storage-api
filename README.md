@@ -7,3 +7,9 @@ Anypoint Partner Manager enables you to connect your own storage solution (such 
 
 To store this content, you must implement an API that provides Anypoint Partner Manager with a standardized way to connect to your unique storage. You can follow read more [here](https://docs.mulesoft.com/partner-manager/2.0/setup-payload-storage-API) in the MuleSoft Documentation.
 
+
+---
+
+* Author: dejim.juang@mulesoft.com
+* Updated Date: August 13, 2020
+

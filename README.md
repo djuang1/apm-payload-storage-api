@@ -7,6 +7,13 @@ Anypoint Partner Manager enables you to connect your own storage solution (such 
 
 To store this content, you must implement an API that provides Anypoint Partner Manager with a standardized way to connect to your unique storage. You can follow read more [here](https://docs.mulesoft.com/partner-manager/2.0/setup-payload-storage-API) in the MuleSoft Documentation.
 
+| Worker Size        | Storage           |
+| ------------- |:-------------:| 
+| 0.1 vCores      | 8 GB | 
+| 0.2 vCores      | 8 GB      |
+| 1 vCores      | 12 GB | 
+| 2 vCores      | 40 GB      |
+
 ## Resources
 * https://docs.mulesoft.com/partner-manager/2.0/setup-payload-storage-API
 * https://www.mulesoft.com/exchange/com.mulesoft.b2b/partner-manager-content-storage-api

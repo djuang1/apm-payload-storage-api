@@ -1,0 +1,37 @@
+{
+  "configs": [
+    "b2b-solution-content-storage.xml",
+    "global-configs.xml",
+    "b2b-solution-content-storage-implementation.xml"
+  ],
+  "secureProperties": [],
+  "redeploymentEnabled": true,
+  "name": "com.mulesoft.b2b:apm-payload-storage-api:1.0.0",
+  "minMuleVersion": "4.2.1",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedPackages": [],
+      "exportedResources": [
+        "log4j2.xml",
+        "b2b-solution-content-storage-implementation.xml",
+        "application-types.xml",
+        "global-configs.xml",
+        "keystore.jks",
+        "api/securitySchemes/clientCredentials.raml",
+        "api/securitySchemes/x-svc-api-key.raml",
+        "api/securitySchemes/basic.raml",
+        "api/securitySchemes/oauth-2.raml",
+        "api/dataTypes/UUID.raml",
+        "api/b2b-solution-content-storage.raml",
+        "b2b-solution-content-storage.xml",
+        "b2b-solution-consumer-storage-service.properties"
+      ]
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}

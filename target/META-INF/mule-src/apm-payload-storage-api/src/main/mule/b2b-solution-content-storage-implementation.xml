@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:s3="http://www.mulesoft.org/schema/mule/s3" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
+http://www.mulesoft.org/schema/mule/s3 http://www.mulesoft.org/schema/mule/s3/current/mule-s3.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+    <flow name="get-content">
+		<logger level="INFO" doc:name="Logger" doc:id="c267c025-11c4-41c9-8460-e5ee41e28f20" message="Attempting to retrieve content from file system" />
+		<set-variable doc:name="fileName" doc:id="2b7169b4-4f3a-4f98-9bda-757519557d90" variableName="fileName" value="#[attributes.uriParams.contentRecordId]"/>
+		<file:read doc:name="Read" doc:id="ab795840-368b-4d74-88d3-9b8c88105b85" path='#["${mule.home}/apps/${app.name}/apm/" ++ vars.fileName]'/>
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="bc2b3b86-21b3-4ab2-9bd2-fb6f71012557" >
+				<logger level="ERROR" doc:name="Log Error" doc:id="1719ae8e-338c-44ec-9315-98dd218e8a78" />
+			</on-error-propagate>
+		</error-handler>
+    </flow>
+	<flow name="post-content" doc:id="78c7d750-0505-4d21-b8ad-b3b907afdbe6">
+		<set-variable value="#[uuid()]" doc:name="fileName" doc:id="788287ca-1ef3-46f6-96d3-89f1bdca4508" variableName="fileName"/>
+		<logger level="DEBUG" doc:name="Logger" doc:id="b09f1b2c-c900-480f-9d55-3b892227dd0d" message="#['Ready to save content in file system. ' + vars.fileName as String]"/>
+		<file:write doc:name="Write" doc:id="7b0d6e82-b202-4b27-9703-641d0cd50065" path='#["${mule.home}/apps/${app.name}/apm/" ++ vars.fileName]'/>
+		<set-payload value="#[null]" doc:name="Set Payload" doc:id="cd13b141-dbe5-40e1-852c-17776140d4b3" />
+		<logger level="INFO" doc:name="Log Success" doc:id="1cc00c2d-1ff5-4c96-8f8c-2704499a4282"/>
+		<error-handler >
+			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="a923e6cb-0708-4c6e-b3b8-6f44b7e41e1a" >
+				<logger level="ERROR" doc:name="Log Error" doc:id="961772d7-f1c7-4afe-8e6b-961c34c73f7b" />
+			</on-error-propagate>
+		</error-handler>
+    </flow>
+</mule>

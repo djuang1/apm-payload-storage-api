@@ -10,9 +10,7 @@ To store this content, you must implement an API that provides Anypoint Partner 
 ## Project
 This Mule application is an example of the [Anypoint Partner Manager Payload Storage API](https://docs.mulesoft.com/partner-manager/2.0/setup-payload-storage-API). It uses the [File Connector](https://docs.mulesoft.com/file-connector/1.3/) and stores the data to the Mule application `src/main/resources` folder either in CloudHub or on-premises.
 
-
-
-
+The table below shows the storage that is available depending on the worker size in CloudHub.
 
 | Worker Size        | Storage           |
 | ------------- |:-------------:| 
